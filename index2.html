@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #content div{
+            display: flex;
+            justify-content: space-evenly;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <input type="number" name="" id="Bankbalance" placeholder="Enter Balance ">
+        <button id="bankbutton">Add BankBalance</button>
+    </div>
+
+    <div id="yourdetails">
+        <input type="text" id="item" placeholder="Enter Item">
+        <input type="number" id="spentonitem" placeholder="Spend Amount">
+<button id="spentbutton">click me</button>
+    </div>
+
+    <p id="showbankbalance">
+        <span></span>
+        <!-- <h1></h1> -->
+        <!-- <h1 id="Remaining"></h1> -->
+
+    </p>
+    <p id="content">
+        <!-- <span id="itemspan"></span>
+        <span id="spentitemspan"></span> -->
+    </p>
+</body>
+<script>
+
+
+let inp1 = document.querySelector("#Bankbalance")
+let btn1 = document.querySelector("#bankbutton")
+
+let inp2 =  document.querySelector("#item")
+let inp3 =  document.querySelector("#spentonitem")
+let btn2 = document.querySelector("#spentbutton")
+
+let total = document.querySelector("#showbankbalance span")
+let pera = document.querySelector("#content")
+let spentmoney = 0;
+
+let Remain = document.createElement("span")
+Remain = 0 ;
+
+
+         btn1.addEventListener('click',function(){
+            total.innerHTML = "total:"+inp1.value ;
+
+         })
+         
+         btn2.addEventListener('click', function(){
+             let div = document.createElement("div")
+             let para1 = document.createElement("span")
+             let para2 = document.createElement("span")
+
+             if(Number(inp1.value) < Number(inp3.value) &&  Number(inp3.value) === 0  ){
+                 
+                 alert("Paisa kma jaake")
+                }
+
+                
+
+
+                    else{
+
+                                para1.innerHTML = "Kharcha Price:" + " "+inp2.value
+                                para2.innerHTML = " kharcha Amount:" +" "+inp3.value
+                                spentmoney = Number(spentmoney) + Number(inp3.value)
+            //  console.log(spentmoney);
+                                 Remain =  Number(inp1.value) - Number(spentmoney)
+                                
+             console.log(Remain);
+             if(Remain<0){
+                 alert("khaali")    
+                 Remain = ""
+                //  total.innerHTML = "" 
+                 para1.innerHTML = ""
+                 para2.innerHTML =  ""    
+             }
+             
+div.append(para1,para2,Remain)
+pera.append(div);
+
+
+// Remain.innerHTML = " "
+        }
+         })
+
+
+</script>
+</html>
